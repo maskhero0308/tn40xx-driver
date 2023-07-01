@@ -1,4 +1,4 @@
-Copy Source from: https://github.com/cahz/tn40xx-driver
+Copy Source from: https://github.com/cahz/tn40xx-driver  
 This repo contains the tn40xx Linux driver for 10Gbit NICs based on the TN4010 MAC from [Tehuti Networks](http://www.tehutinetworks.net).
 
 This driver enables the following 10Gb SFP+ NICs:
