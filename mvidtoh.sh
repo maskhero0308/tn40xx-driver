@@ -25,7 +25,7 @@ if [ $PHY_NAME != "MV88X3120" ] && [ $PHY_NAME != "MV88X3310" ] && [ $PHY_NAME !
 	exit 1
 fi
 
-len=`xxd -i $HDR_FILE | grep _len | awk '{print $5}'`
+len=`sed -i $HDR_FILE | grep _len | awk '{print $5}'`
 
 /bin/rm -f $H_FILE
 echo "" > $H_FILE
@@ -37,12 +37,12 @@ if [ $PHY_NAME == "AQR105" ]; then
 	echo "unsigned int ${PHY_NAME}_phy_firmware_len = ${len}" >> $H_FILE
 	echo "static u8 ${PHY_NAME}_phy_firmware[] __initdata = {" >> $H_FILE
 	echo "/* $HDR_FILE */" >> $H_FILE
-	xxd -i -c 8 $HDR_FILE | grep -v "unsigned" >> $H_FILE
+	sed -i -c 8 $HDR_FILE | grep -v "unsigned" >> $H_FILE
 	echo "#endif" >> $H_FILE
 else
 	echo "static u16 ${PHY_NAME}_phy_initdata[] __initdata = {" >> $H_FILE
 	echo "/* $HDR_FILE */" >> $H_FILE
-	xxd -i -c 2 $HDR_FILE | sed 's/, 0x//' | grep -v "unsigned" >> $H_FILE
+	sed -i -c 2 $HDR_FILE | sed 's/, 0x//' | grep -v "unsigned" >> $H_FILE
 	echo "unsigned int ${PHY_NAME}_phy_initdata_len = ${len}" >> $H_FILE
 	echo "#endif" >> $H_FILE
 fi
