@@ -4290,7 +4290,7 @@ static void __init bdx_scan_pci(void)
 				       bdx_pci_tbl[j].subvendor,
 				       bdx_pci_tbl[j].subdevice, dev))) {
 			nDevices += 1;
-			pr_info("%d %04x:%04x:%04x:%04x\n", nDevices,
+			pr_info("Found Device:%d pci info:%04x:%04x:%04x:%04x\n", nDevices,
 				bdx_pci_tbl[j].vendor, bdx_pci_tbl[j].device,
 				bdx_pci_tbl[j].subvendor,
 				bdx_pci_tbl[j].subdevice);
